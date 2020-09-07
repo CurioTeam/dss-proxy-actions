@@ -1,7 +1,7 @@
 # dss-proxy-actions
 Proxy functions to be used via ds-proxy. These functions are based on `dss-cdp-manager` as CDP registry.
 
-https://github.com/makerdao/dss-proxy-actions
+https://github.com/CurioTeam/dss-proxy-actions
 
 ## DssProxyActions
 
@@ -17,9 +17,9 @@ https://github.com/makerdao/dss-proxy-actions
 
 `flux(address manager, uint cdp, address dst, uint wad)`: moves `wad` amount of collateral from `cdp` address to `dst` address.
 
-`move(address manager, uint cdp, address dst, uint rad)`: moves `rad` amount of DAI from `cdp` address to `dst` address.
+`move(address manager, uint cdp, address dst, uint rad)`: moves `rad` amount of CSC from `cdp` address to `dst` address.
 
-`frob(address manager, uint cdp, int dink, int dart)`: executes `frob` to `cdp` address assigning the collateral freed and/or DAI drawn to the same address.
+`frob(address manager, uint cdp, int dink, int dart)`: executes `frob` to `cdp` address assigning the collateral freed and/or CSC drawn to the same address.
 
 `quit(address manager, uint cdp, address dst)`: moves `cdp` collateral balance and debt to `dst` address.
 
@@ -39,13 +39,13 @@ https://github.com/makerdao/dss-proxy-actions
 
 `freeGem(address manager, address gemJoin, uint cdp, uint wad)`: executes `frob` to `cdp` decreasing locked collateral and withdraws `wad` amount of collateral from `gemJoin` adapter.
 
-`draw(address manager, address jug, address daiJoin, uint cdp, uint wad)`: updates collateral fee rate, executes `frob` to `cdp` increasing debt and exits `wad` amount of DAI token (minting it) from `daiJoin` adapter.
+`draw(address manager, address jug, address daiJoin, uint cdp, uint wad)`: updates collateral fee rate, executes `frob` to `cdp` increasing debt and exits `wad` amount of CSC token (minting it) from `daiJoin` adapter.
 
-`wipe(address manager, address daiJoin, uint cdp, uint wad)`: joins `wad` amount of DAI token to `daiJoin` adapter (burning it) and executes `frob` to `cdp` for decreasing debt.
+`wipe(address manager, address daiJoin, uint cdp, uint wad)`: joins `wad` amount of CSC token to `daiJoin` adapter (burning it) and executes `frob` to `cdp` for decreasing debt.
 
 `safeWipe(address manager, address daiJoin, uint cdp, uint wad, address owner)`: same than `wipe` but requiring `owner == cdp owner`.
 
-`wipeAll(address manager, address daiJoin, uint cdp)`: joins all the necessary amount of DAI token to `daiJoin` adapter (burning it) and executes `frob` to `cdp` setting the debt to zero.
+`wipeAll(address manager, address daiJoin, uint cdp)`: joins all the necessary amount of CSC token to `daiJoin` adapter (burning it) and executes `frob` to `cdp` setting the debt to zero.
 
 `safeWipeAll(address manager, address daiJoin, uint cdp, address owner)`: same than `wipeAll` but requiring `owner == cdp owner`.
 
@@ -79,16 +79,16 @@ https://github.com/makerdao/dss-proxy-actions
 
 `freeGem(address manager, address gemJoin, address end, uint cdp)`: after system is caged, recovers remaining token from `cdp` (pays remaining debt if exists).
 
-`pack(address daiJoin, address end, uint wad)`: after system is caged, packs `wad` amount of DAI to be ready for cashing.
+`pack(address daiJoin, address end, uint wad)`: after system is caged, packs `wad` amount of CSC to be ready for cashing.
 
-`cashETH(address ethJoin, address end, bytes32 ilk, uint wad)`: after system is caged, cashes `wad` amount of previously packed DAI and returns the equivalent in ETH.
+`cashETH(address ethJoin, address end, bytes32 ilk, uint wad)`: after system is caged, cashes `wad` amount of previously packed CSC and returns the equivalent in ETH.
 
-`cashGem(address gemJoin, address end, bytes32 ilk, uint wad)`: after system is caged, cashes `wad` amount of previously packed DAI and returns the equivalent in token.
+`cashGem(address gemJoin, address end, bytes32 ilk, uint wad)`: after system is caged, cashes `wad` amount of previously packed CSC and returns the equivalent in token.
 
 ## DssProxyActionsDsr
 
-`join(address daiJoin, address pot, uint wad)`: joins `wad` amount of DAI token to `daiJoin` adapter (burning it) and moves balance to `pot` for DAI Saving Rates.
+`join(address daiJoin, address pot, uint wad)`: joins `wad` amount of CSC token to `daiJoin` adapter (burning it) and moves balance to `pot` for CSC Saving Rates.
 
-`exit(address daiJoin, address pot, uint wad)`: retrieves `wad` amount of DAI from `pot` and exits DAI token from `daiJoin` adapter (minting it).
+`exit(address daiJoin, address pot, uint wad)`: retrieves `wad` amount of CSC from `pot` and exits CSC token from `daiJoin` adapter (minting it).
 
 `exitAll(address daiJoin, address pot)`: same than `exit` but all the available amount.
